@@ -200,6 +200,9 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self sharedView].hapticsEnabled = hapticsEnabled;
 }
 
++ (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
+    [self sharedView].edgeInsets = edgeInsets;
+}
 #pragma mark - Show Methods
 
 + (void)show {

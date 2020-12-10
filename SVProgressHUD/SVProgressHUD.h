@@ -108,6 +108,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setFadeOutAnimationDuration:(NSTimeInterval)duration;       // default is 0.15 seconds
 + (void)setMaxSupportedWindowLevel:(UIWindowLevel)windowLevel;      // default is UIWindowLevelNormal
 + (void)setHapticsEnabled:(BOOL)hapticsEnabled;						// default is NO
++ (void)setEdgeInsets:(UIEdgeInsets)edgeInsets;                     // default is (12, 12, 12, 12)
 
 #pragma mark - Show Methods
 
