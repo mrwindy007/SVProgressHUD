@@ -102,6 +102,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self sharedView].minimumSize = minimumSize;
 }
 
++ (void)setMaximumSize:(CGSize)maximumsize {
+    [self sharedView].maximumSize = maximumsize;
+}
+
 + (void)setRingThickness:(CGFloat)ringThickness {
     [self sharedView].ringThickness = ringThickness;
 }
@@ -376,6 +380,8 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     if((self = [super initWithFrame:frame])) {
         _isInitializing = YES;
         
+        self.maximumSize = CGSizeMake(200, 300);
+        self.edgeInsets = UIEdgeInsetsMake(12, 12  12, 12);
         self.userInteractionEnabled = NO;
         self.activityCount = 0;
         
@@ -445,8 +451,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     CGFloat labelWidth = 0.0f;
     
     if(self.statusLabel.text) {
-        CGSize constraintSize = CGSizeMake(200.0f, 300.0f);
-        labelRect = [self.statusLabel.text boundingRectWithSize:constraintSize
+        labelRect = [self.statusLabel.text boundingRectWithSize:self.maximumSize
                                                         options:(NSStringDrawingOptions)(NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin)
                                                      attributes:@{NSFontAttributeName: self.statusLabel.font}
                                                         context:NULL];
@@ -469,10 +474,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     }
     
     // |-spacing-content-spacing-|
-    hudWidth = SVProgressHUDHorizontalSpacing + MAX(labelWidth, contentWidth) + SVProgressHUDHorizontalSpacing;
+    hudWidth = self.edgeInsets.left + MAX(labelWidth, contentWidth) + self.edgeInsets.right;
     
     // |-spacing-content-(labelSpacing-label-)spacing-|
-    hudHeight = SVProgressHUDVerticalSpacing + labelHeight + contentHeight + SVProgressHUDVerticalSpacing;
+    hudHeight = self.edgeInsets.top + labelHeight + contentHeight + self.edgeInsets.bottom;
     if(self.statusLabel.text && (imageUsed || progressUsed)){
         // Add spacing if both content and label are used
         hudHeight += SVProgressHUDLabelSpacing;

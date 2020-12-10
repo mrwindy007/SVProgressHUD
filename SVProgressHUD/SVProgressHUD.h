@@ -48,6 +48,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (assign, nonatomic) SVProgressHUDAnimationType defaultAnimationType UI_APPEARANCE_SELECTOR;   // default is SVProgressHUDAnimationTypeFlat
 @property (strong, nonatomic, nullable) UIView *containerView;                              // if nil then use default window level
 @property (assign, nonatomic) CGSize minimumSize UI_APPEARANCE_SELECTOR;                    // default is CGSizeZero, can be used to avoid resizing for a larger message
+@property (assign, nonatomic) CGSize maximumSize UI_APPEARANCE_SELECTOR;   //default is 200x300
 @property (assign, nonatomic) CGFloat ringThickness UI_APPEARANCE_SELECTOR;                 // default is 2 pt
 @property (assign, nonatomic) CGFloat ringRadius UI_APPEARANCE_SELECTOR;                    // default is 18 pt
 @property (assign, nonatomic) CGFloat ringNoTextRadius UI_APPEARANCE_SELECTOR;              // default is 24 pt
@@ -74,12 +75,16 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (assign, nonatomic) UIWindowLevel maxSupportedWindowLevel; // default is UIWindowLevelNormal
 
 @property (assign, nonatomic) BOOL hapticsEnabled;	// default is NO
+@property (assign, nonatomic) UIEdgeInsets edgeInsets;    //default is (12, 12, 12, 12)
+
+
 
 + (void)setDefaultStyle:(SVProgressHUDStyle)style;                  // default is SVProgressHUDStyleLight
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType;         // default is SVProgressHUDMaskTypeNone
 + (void)setDefaultAnimationType:(SVProgressHUDAnimationType)type;   // default is SVProgressHUDAnimationTypeFlat
 + (void)setContainerView:(nullable UIView*)containerView;           // default is window level
 + (void)setMinimumSize:(CGSize)minimumSize;                         // default is CGSizeZero, can be used to avoid resizing for a larger message
++ (void)setMaximumSize:(CGSize)maximumsize; // default is 200x300
 + (void)setRingThickness:(CGFloat)ringThickness;                    // default is 2 pt
 + (void)setRingRadius:(CGFloat)radius;                              // default is 18 pt
 + (void)setRingNoTextRadius:(CGFloat)radius;                        // default is 24 pt
