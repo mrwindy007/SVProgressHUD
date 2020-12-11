@@ -384,7 +384,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         _isInitializing = YES;
         
         self.maximumSize = CGSizeMake(200, 300);
-        self.edgeInsets = UIEdgeInsetsMake(12, 12  12, 12);
+        self.edgeInsets = UIEdgeInsetsMake(12, 12, 12, 12);
         self.userInteractionEnabled = NO;
         self.activityCount = 0;
         
